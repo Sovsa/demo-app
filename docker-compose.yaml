@@ -1,0 +1,36 @@
+services:
+  demo-app:
+    image: demo-app
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - demo-net
+    depends_on:
+      - warehousedb
+    environment:
+      MYSQL_HOST: warehousedb
+      MYSQL_USER: warehousedb.MYSQL_USER
+      MYSQL_PASSWORD: warehousedb.MYSQL_PASSWORD
+      MYSQL_PORT: 3306
+
+  warehousedb:
+    container_name: warehousedb
+    image: mysql:8.4.3
+    volumes:
+      - mysqlvolume:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    networks:
+      - demo-net
+    environment:
+      MYSQL_DATABASE: warehousedb
+      MYSQL_USER: springuser
+      MYSQL_PASSWORD: 5SpeckledFrogs
+      MYSQL_ROOT_PASSWORD: root
+
+networks:
+  demo-net:
+volumes: 
+  mysqlvolume: 

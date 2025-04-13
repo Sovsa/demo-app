@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Furniture Warehouse</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+    <h1>Welcome to the Furniture Warehouse Store</h1>
+
+    <div th:if="${message}" class="flash-message" id="flashMessage">
+        <span th:text="${message}"></span>
+        <button class="flash-close" onclick="document.getElementById('flashMessage').style.display='none'">✖</button>
+    </div>
+
+    <div>
+        <p>What would you like to do?</p>
+        <div class="linkdiv">
+            <form th:action="@{/upload-product}" method="post" enctype="multipart/form-data">
+                <label for="productFile" style="display: none;"></label>
+                <input type="file" id="productFile" name="file" accept=".csv,.json" onchange="this.form.submit()"
+                    style="display: none;">
+                <button type="button" onclick="document.getElementById('productFile').click()">Upload Product
+                    File</button>
+            </form>
+
+            <form th:action="@{/upload-article}" method="post" enctype="multipart/form-data">
+                <label for="articleFile" style="display: none;"></label>
+                <input type="file" id="articleFile" name="file" accept=".csv,.json" onchange="this.form.submit()"
+                    style="display: none;">
+                <button type="button" onclick="document.getElementById('articleFile').click()">Upload Article
+                    File</button>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="content-flex">
+        <div class="furniture-list">
+            <h2>Available Furniture</h2>
+            <div th:if="${productList != null}">
+                <ul>
+                    <li th:each="furniture : ${productList}">
+                        <strong th:text="${furniture.name}">Furniture Name</strong> -
+                        <span>$<span th:text="${furniture.price}">0.00</span></span>
+                        <span th:text="'Available: ' + ${furniture.amountAvailable}">Available: 0</span>
+                        <form th:action="@{/buy/{id}(id=${furniture.productid})}" method="post" style="display:inline;">
+                            <button type="submit">Buy</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            <div th:if="${productList == null or #lists.isEmpty(productList)}">
+                <p>No furniture available at the moment.</p>
+            </div>
+        </div>
+
+        <div class="stock-box">
+            <h3>Current Stock</h3>
+            <ul th:if="${inventoryList != null}" class="stock-list">
+                <li th:each="item : ${inventoryList}" class="stock-row">
+                    <span class="stock-name" th:text="${item.name}">Item</span>
+                    <span class="stock-amount" th:text="${item.stock}">0</span>
+                    <span class="stock-unit">pcs</span>
+                </li>
+            </ul>
+            <p th:if="${inventoryList == null or #lists.isEmpty(inventoryList)}">No stock data available.</p>
+        </div>
+    </div>
+</body>
+
+</html>

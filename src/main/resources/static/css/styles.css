@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f6f8fa;
+    padding: 40px;
+    color: #333;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+h2 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    color: #34495e;
+}
+
+div {
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+a button {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li span, li strong {
+    margin-right: 10px;
+}
+
+form {
+    display: inline;
+}
+
+.linkdiv {
+    margin-top: 10px;
+}
+
+.content-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.furniture-list {
+    flex: 1;
+}
+
+.stock-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
+.stock-box {
+    background-color: #f0f0f0;
+    padding: 1rem;
+    width: 300px;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-top: 2rem;
+}
+
+.flash-message {
+    position: relative;
+    background-color: #e0ffe0;
+    border: 1px solid #88cc88;
+    padding: 1rem 2.5rem 1rem 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    color: #2e7d32;
+    font-weight: 500;
+    animation: fadeIn 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.flash-close {
+    position: absolute;
+    top: 50%;
+    right: 0.75rem;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #2e7d32;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.stock-list li.stock-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+    padding: 6px 0;
+    align-items: center;
+}
+
+.stock-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.stock-amount {
+    text-align: right;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.stock-unit {
+    color: #555;
+}
