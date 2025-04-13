@@ -19,3 +19,6 @@ Run the application by going to the root of the repository and running `docker c
 
 ### 4. Visit the page
 Unless there is an conflict of ports on your localhost, you should be able to visit the page on http://localhost:8080/
+
+### 5. Upload files
+Upload the inventory.json and the products.json to the page on the homepage to test the functionality. The inventory must be uploaded first for the products to find the articles.
